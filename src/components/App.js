@@ -4,6 +4,7 @@ import './App.css';
 import NaviBar from './navi/menu';
 import About from './about/about';
 import Home from './home/home';
+import Author from './authors/authorpage';
 
 class App extends Component {
   render() {
@@ -11,6 +12,9 @@ class App extends Component {
     switch (this.props.route) {
       case 'about':
         Child = About;
+        break;
+        case 'author':
+        Child = Author;
         break;
       default:
         Child = Home;
