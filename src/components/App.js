@@ -2,33 +2,26 @@ import React, { Component } from 'react';
 import logo from './../logo.svg';
 import './App.css';
 import NaviBar from './navi/menu';
-import About from './about/about';
-import Home from './home/home';
-import Author from './authors/authorpage';
+import Routes from "./route";
+import {HashRouter} from "react-router-dom";
 
 class App extends Component {
   render() {
-    var Child;
-    switch (this.props.route) {
-      case 'about':
-        Child = About;
-        break;
-        case 'author':
-        Child = Author;
-        break;
-      default:
-        Child = Home;
-    }
+   
     return (
+      <HashRouter>
       <div className="App">
         <div>
           <NaviBar />
         </div>
         <div className="container">
-          <Child />
+      
+          <Routes/>
+      
+         
         </div>
-
       </div>
+      </HashRouter>
     );
   }
 }

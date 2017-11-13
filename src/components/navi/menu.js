@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 // let NaviBar = () =>{
 // let active = 'active';
@@ -39,9 +40,9 @@ class NaviBar extends React.Component{
                    </a>
                  </div>
                  <ul className="nav navbar-nav">
-                   <li className={this.getAcitveMenu('home')}><a  onClick={()=>this.selectMenu('home')} href="/">Home</a></li>
-                   <li className={this.getAcitveMenu('about')} ><a onClick={()=> this.selectMenu('about')} href="#about">About</a></li>           
-                   <li className={this.getAcitveMenu('author')} ><a onClick={()=> this.selectMenu('author')} href="#author">Authors</a></li>           
+                   <li className={this.getAcitveMenu('home')}><Link to="/">Home</Link></li>
+                   <li className={this.getAcitveMenu('about')} ><Link to="/about">About</Link> </li>           
+                   <li className={this.getAcitveMenu('author')} ><Link to="/author">Authors</Link></li>           
                  </ul>
                </div>
             </nav>
