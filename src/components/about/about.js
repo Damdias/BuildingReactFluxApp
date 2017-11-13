@@ -17,6 +17,7 @@ class About extends React.Component {
                     <li>Gulp</li>
                     <li>Browserify</li>
                     <li>Bootstrap</li>
+                    <li>{this.props.match.params.name}</li>
                 </ul>
             </div>
         );

@@ -15,7 +15,7 @@ let Routes =() => {
     return(
     <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path="/about" component={About}/>
+            <Route path="/about/:name" component={About}/>
             <Route path="/author" component={Authors}/>
        
     </Switch>

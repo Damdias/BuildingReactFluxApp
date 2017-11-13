@@ -41,7 +41,7 @@ class NaviBar extends React.Component{
                  </div>
                  <ul className="nav navbar-nav">
                    <li className={this.getAcitveMenu('home')}><Link to="/">Home</Link></li>
-                   <li className={this.getAcitveMenu('about')} ><Link to="/about">About</Link> </li>           
+                   <li className={this.getAcitveMenu('about')} ><Link to="/about/test">About</Link> </li>           
                    <li className={this.getAcitveMenu('author')} ><Link to="/author">Authors</Link></li>           
                  </ul>
                </div>
