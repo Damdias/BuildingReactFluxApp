@@ -4,11 +4,7 @@ import React from 'react';
 
 class About extends React.Component {
     static willTransitionTo(transition, replaceWith) {
-        if (!UserStore.isLoggedIn()) {
-            replaceWith({
-                nextPathname: transition.location.pathname
-            }, '/login');
-        }
+        console.log(transition);
     }
     render() {
         return (
