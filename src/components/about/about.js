@@ -3,9 +3,8 @@
 import React from 'react';
 
 class About extends React.Component {
-    static willTransitionTo(transition, replaceWith) {
-        console.log(transition);
-    }
+    
+      
     render() {
         return (
             <div className="col-6">
@@ -26,4 +25,5 @@ class About extends React.Component {
         );
     }
 }
+
 export default About;

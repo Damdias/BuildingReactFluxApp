@@ -1,6 +1,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from 'react-router-dom';
 
 class AuthorList extends React.Component {
     
@@ -8,17 +9,20 @@ class AuthorList extends React.Component {
     createRow = (author)=>{
         return(
             <tr key={author.id}>
-                <td><a href={"/#author/"+author.id}>{author.id}</a></td>
+                <td><Link to={"/manageAuthor/"+author.id}>{author.id}</Link></td>
                 <td>{author.fristName} {author.lastName}</td>
             </tr>
         );
     }
     render() {
-        return (                
+             return (    
+            
                 <table className="table">
                     <thead>
-                        <th>ID</th>
-                        <th>Name</th>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                        </tr>
                     </thead>
                     <tbody>
                     {this.props.authors.map(this.createRow,this)}
