@@ -3,21 +3,27 @@ import React from "react";
 import AuthorApi from './../../api/authorapi'
 import AuthorList from "./authorList";
 import { Link } from 'react-router-dom';
+import AuthorStore from "./../../stores/authorStore";
 
 class Author extends React.Component {
     state = {
-        authors: []
+        authors: AuthorStore.getAllAuthors()
     };
-    componentDidMount = () => {
-        this.setState({ authors: AuthorApi.getAllAuthors() });
-    }
-
+componentWillMount(){
+    AuthorStore.addChangeListener(this._onChange);
+}
+componentWillUnmount(){
+    AuthorStore.removeChangeListerner(this._onChange);
+}
+_onChange= ()=>{
+   this.setState({author:AuthorStore.getAllAuthors()});
+}
     render() {
         return (
             <div>
-                <Link className="btn btn-primary" to="/manageAuthor">Add Author</Link>
+                <Link className="btn btn-primary" to="/addauthor">Add Author</Link>
                 <h1>Authors</h1>
-                <AuthorList authors={this.state.authors} />
+                <AuthorList onDeleted={this._onChange} authors={this.state.authors} />
             </div>
         );
     }

@@ -2,8 +2,10 @@ import React from 'react';
 import AuthorForm from './authorForm';
 import AuthorAPI from './../../api/authorapi';
 import toastr from "toastr";
-
+import AuthorAction from '../../actions/authorActions';
+import AuthorStore from "./../../stores/authorStore";
 class ManageAuthor extends React.Component {
+   
     state = {
         author: {
             id: '',
@@ -12,12 +14,14 @@ class ManageAuthor extends React.Component {
         },
         errors: {}
     }
+    
     onChange = (e) => {
         //alert(e.target.value);
         let field = e.target.name;
         let value = e.target.value;
         this.state.author[field] = value;
         this.setState((pre) => ({ author: pre.author }));
+
     }
     authorFormValid = () => {
         var formisValid = true;
@@ -38,28 +42,33 @@ class ManageAuthor extends React.Component {
     }
     save = (e) => {
         e.preventDefault();
-        if (!this.authorFormValid()) {
+       if (!this.authorFormValid()) {
             return;
         }
-      
-        AuthorAPI.saveAuthor(this.state.author);
+      if(this.state.author.id === ""){
+        AuthorAction.createAuthor(this.state.author);
+      }
+      else{
+          AuthorAction.updateAuthor(this.state.author);
+      }
+       // AuthorAPI.saveAuthor(this.state.author);
+       
         toastr.success("adding author");
     }
-    componentDidMount = () => {
+    componentWillMount = () => {
         let authorname = this.props.match.params.id;
-        if (authorname) {
-           let findauthor = AuthorAPI.getAuthorById(authorname);
-           this.state.author.firstName = findauthor.firstName;
-           this.setState((pre) => ({ author: pre.author }));
-         
-            //this.setState({author:{firstName:findauthor.firstName}});
-            console.log(this.state.author);
+     
+        if (authorname) {           
+          this.setState({author:AuthorStore.getAuthorById(authorname)});
         }
     }
     render() {
         
         return (
-            <AuthorForm author={this.state.author} onChange={this.onChange} save={this.save} errors={this.state.errors} />
+            <AuthorForm author={this.state.author} 
+            onChange={this.onChange} 
+            save={this.save} 
+            errors={this.state.errors} />
         );
     }
 }

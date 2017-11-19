@@ -3,6 +3,7 @@ import Input from "./../../common/textinput";
 
 class AuthorForm extends React.Component {
     render() {
+        console.log(this.props);
         return (
             <form onSubmit={this.props.save}>
                 <h1>Manage Author</h1>

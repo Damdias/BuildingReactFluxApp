@@ -16,6 +16,7 @@ export default class Input extends React.Component {
                         className="form-control"
                         placeholder={this.props.placeholder}
                         ref={this.props.name}
+                        value={this.props.value}
                         onChange={this.props.onChange}
                     />
                     <div className="input">{this.props.error}</div>
